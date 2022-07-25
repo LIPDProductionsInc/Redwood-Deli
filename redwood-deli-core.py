@@ -26,7 +26,7 @@ initial_extensions = ['cogs.redwood-deli-apply',
 
 @bot.event
 async def on_ready():
-    print(f'Successfully logged in as {bot.user}, Running Verison 0.0.0.5'.format(bot))
+    print(f'Successfully logged in as {bot.user}, Running Verison 0.0.0.6'.format(bot))
     activity = discord.Activity(name='with food | !help', type=discord.ActivityType.playing)
     await bot.change_presence(activity=activity)
     await asyncio.sleep(1)
@@ -45,6 +45,11 @@ async def on_ready():
 async def test(interaction: discord.Interaction):
     await interaction.response.send_message('Success!')
     pass
+
+@commands.hybrid_command(name="source", desciption="Get the source code for Redwood Deli")
+@commands.guild_only()
+async def sourcecode(ctx: commands.Context):
+    await ctx.send("Check out the source code for Redwood Deli and help add to the bot here: https://github.com/LIPDProductionsInc/Redwood-Deli")
 
 async def main():
     async with bot:
