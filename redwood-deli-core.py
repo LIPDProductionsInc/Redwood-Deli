@@ -19,6 +19,7 @@ bot = MyBot(command_prefix="!", help_command=None, case_insensitive=True, intent
 tree = bot.tree
 
 initial_extensions = ['cogs.redwood-deli-apply',
+                      'cogs.redwood-deli-commands',
                       'cogs.redwood-deli-errors',
                       'cogs.redwood-deli-owner',
                       'cogs.redwood-deli-roblox'
@@ -26,7 +27,7 @@ initial_extensions = ['cogs.redwood-deli-apply',
 
 @bot.event
 async def on_ready():
-    print(f'Successfully logged in as {bot.user}, Running Verison 0.0.0.6'.format(bot))
+    print(f'Successfully logged in as {bot.user}, Running Verison 0.0.0.7'.format(bot))
     activity = discord.Activity(name='with food | !help', type=discord.ActivityType.playing)
     await bot.change_presence(activity=activity)
     await asyncio.sleep(1)
@@ -44,18 +45,6 @@ async def on_ready():
 @commands.is_owner()
 async def test(interaction: discord.Interaction):
     await interaction.response.send_message('Success!')
-    pass
-
-@commands.hybrid_command(name='ping', description='Get the ping of the bot')
-@commands.guild_only()
-async def ping(ctx: commands.Context):
-    await ctx.send("Pong!")
-    pass
-
-@commands.hybrid_command(name="source", description="Get the source code for Redwood Deli")
-@commands.guild_only()
-async def sourcecode(ctx: commands.Context):
-    await ctx.send("Check out the source code for Redwood Deli and help add to the bot here: https://github.com/LIPDProductionsInc/Redwood-Deli")
     pass
 
 async def main():
