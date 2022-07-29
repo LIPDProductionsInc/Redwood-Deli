@@ -1,7 +1,10 @@
 import discord
 import datetime
+import os
 
 from discord.ext import commands
+from dotenv import load_dotenv
+load_dotenv()
 
 class ApplicationCog(commands.Cog):
     def __init__(self, bot: commands.Bot) -> None:
@@ -10,7 +13,7 @@ class ApplicationCog(commands.Cog):
     @commands.hybrid_command(name="apply", description="Apply to Redwood Deli or to become a manager")
     async def apply_command(self, ctx: commands.Context, type = None) -> None:
         user = ctx.bot.get_user(ctx.author.id)
-        channel = ctx.bot.get_channel(999202644839108698)
+        channel = ctx.bot.get_channel(os.getenv("GeneralApplyChannel"))
         await ctx.send("Check your DMs")
         if type == None:
             await user.send("What is your ROBLOX name?")
@@ -80,7 +83,7 @@ class ApplicationCog(commands.Cog):
     @commands.hybrid_command(name='accept', description='Accept an applicant')
     @commands.has_any_role(993189120400691210,993190740534509678,993198036144640070)
     async def accept_command(self, ctx: commands.Context, member: discord.Member) -> None:
-        channel = ctx.bot.get_channel(993199403449983017)
+        channel = ctx.bot.get_channel(os.getenv("LogChannel"))
         await member.send(f"""
 ----------------------------------------------------------
 FROM: {ctx.author.nick}@discordia.com

@@ -186,6 +186,8 @@ Latency: **{round(self.bot.latency * 1000)}**ms
         request_role = """
 The following roles can be requested from <@155149108183695360> using `?rank` followed by the name of the role:
 - <@&1000334009651429467>
+- <@&1001014065822453800>
+- <@&1001013976840294450>
         """
         notice = """
 - Your up-to-date callsign or rank **MUST** be a part of your nickname
