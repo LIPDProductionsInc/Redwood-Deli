@@ -18,7 +18,8 @@ class MyBot(commands.Bot):
 bot = MyBot(command_prefix="!", help_command=None, case_insensitive=True, intents=discord.Intents.all(), fetch_offline_users=True)
 tree = bot.tree
 
-initial_extensions = ['cogs.redwood-deli-apply',
+initial_extensions = ['cogs.redwood-deli-admin',
+                      'cogs.redwood-deli-apply',
                       'cogs.redwood-deli-commands',
                       'cogs.redwood-deli-errors',
                       'cogs.redwood-deli-owner',
@@ -27,7 +28,7 @@ initial_extensions = ['cogs.redwood-deli-apply',
 
 @bot.event
 async def on_ready():
-    print(f'Successfully logged in as {bot.user}, Running Verison 0.0.0.8'.format(bot))
+    print(f'Successfully logged in as {bot.user}, Running Verison 0.0.0.9'.format(bot))
     activity = discord.Activity(name='with food | !help', type=discord.ActivityType.playing)
     await bot.change_presence(activity=activity)
     await asyncio.sleep(1)
@@ -40,6 +41,14 @@ async def on_ready():
     print('Cogs loaded:')
     await asyncio.sleep(1)
     print(bot.cogs)
+
+@bot.event
+async def on_user_update(before, after):
+    try:
+        if after.id == bot.owner.id and before.name != after.name:
+            bot.owner = bot.get_user(after.id)
+    except AttributeError:
+        pass
 
 @tree.command(name='test-slash', description="testing")
 @commands.is_owner()
