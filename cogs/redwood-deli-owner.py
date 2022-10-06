@@ -166,7 +166,7 @@ class OwnerCog(commands.Cog, name="Owner Commands"):
         embed.add_field(name='Rule 13', value='Your display name **MUST** be set to your **ROBLOX** username. **NO EXCEPTIONS!!!** Callsigns are allowed if your department provides one.', inline=False)
         embed.add_field(name='Rule 14', value='Trolling and/or providing false information on purpose is forbidden', inline=False)
         embed.set_footer(text='Rules lase updated on:')
-        embed.timestamp = datetime.datetime.utcnow()
+        embed.timestamp = datetime.datetime.now()
         await channel.send(embed=embed)
         pass
     
@@ -192,6 +192,8 @@ Discord.py Version: **{discord.__version__}**
 Current CPU Usage: **{psutil.cpu_percent()}**
 
 Current RAM Usage: **{psutil.virtual_memory().percent}**
+
+Average System Load: **{[x / psutil.cpu_count() * 100 for x in psutil.getloadavg()]}%**
 
 Latency: **{round(self.bot.latency * 1000)}**ms
 '''

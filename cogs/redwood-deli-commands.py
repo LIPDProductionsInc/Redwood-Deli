@@ -11,7 +11,7 @@ class ExtraCommandsCog(commands.Cog):
     @commands.guild_only()
     async def ping_command(self, ctx: commands.Context):
         embed=discord.Embed(
-            title='ROOM SEALER PINGS :ping_pong:',
+            title='REDWOOD DELI PINGS :ping_pong:',
             type='rich',
             colour=discord.Color(0xFF9E00),
             description=f'''Pong!
